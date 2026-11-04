@@ -1,0 +1,163 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.player-page {
+  min-height: 100vh;
+  padding: 8px;
+  font-family: Arial, sans-serif;
+  color: #17251b;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  background-image:
+    linear-gradient(
+      rgba(10, 30, 18, 0.25),
+      rgba(10, 30, 18, 0.25)
+    ),
+    url('/stadium-background.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.navbar {
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  background-color: rgba(244, 244, 244, 0.90);
+  border-bottom: 4px solid #167a35;
+}
+
+.logo img {
+  width: 105px;
+  height: auto;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.navbar nav a {
+  color: #174d29;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.navbar nav a:hover {
+  color: #249447;
+}
+
+.content {
+  flex: 1;
+  min-height: calc(100vh - 91px);
+  background-color: rgba(228, 232, 226, 0.68);
+  padding: 35px 30px;
+  box-sizing: border-box;
+}
+
+.content h2 {
+  font-size: 28px;
+  margin: 5px 0 25px;
+  font-weight: bold;
+  color: #174d29;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 17px 14px;
+  text-align: left;
+  border: 1px solid #c5d3c5;
+  font-size: 15px;
+}
+
+th {
+  background-color: #176b35;
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #e3f0e3;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: #c5e5c8;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 10px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .logo img {
+    width: 75px;
+  }
+
+  .navbar nav {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .navbar nav a {
+    font-size: 12px;
+  }
+
+  .content {
+    padding: 20px 12px;
+    overflow-x: auto;
+  }
+
+  .content h2 {
+    font-size: 22px;
+  }
+
+  table {
+    min-width: 700px;
+  }
+}
+
+.status {
+  display: inline-block;
+  padding: 6px 13px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.status.active {
+  background-color: #d7f2dc;
+  color: #176b35;
+  border: 1px solid #9bd5a6;
+}

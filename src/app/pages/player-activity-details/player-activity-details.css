@@ -1,0 +1,177 @@
+
+.player-page {
+  min-height: 100vh;
+  background-image: url('/stadium-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+/* Header */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 12px 30px;
+  border-bottom: 3px solid #176b35;
+}
+
+.logo img {
+  width: 130px;
+  height: auto;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 18px;
+}
+
+.navbar nav a {
+  color: #222;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.navbar nav a:hover {
+  color: #176b35;
+}
+
+/* Main content */
+.content {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 25px;
+}
+
+.content h2 {
+  margin-bottom: 25px;
+  color: #176b35;
+  font-size: 27px;
+}
+
+/* Two-column layout */
+.details-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 25px;
+  align-items: start;
+}
+
+/* Details cards */
+.details-card,
+.participation-card {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid #176b35;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.details-card h3,
+.participation-card h3 {
+  color: #176b35;
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 19px;
+}
+
+.details-card p {
+  margin: 13px 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Response buttons */
+.response-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.response-buttons button {
+  padding: 9px 12px;
+  background: #ffffff;
+  color: #176b35;
+  border: 1px solid #176b35;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.response-buttons button:hover,
+.response-buttons button.selected {
+  background: #176b35;
+  color: #ffffff;
+}
+
+/* Comment */
+.participation-card textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  resize: vertical;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+/* Save button */
+.save-button {
+  display: block;
+  margin: 10px auto 0;
+  padding: 10px 30px;
+  background: #176b35;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.save-button:hover {
+  background: #105329;
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-top: 22px;
+  color: #176b35;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .navbar nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .details-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .content {
+    padding: 15px;
+  }
+}

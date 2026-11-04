@@ -1,0 +1,90 @@
+<div class="player-page">
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="/if-engbo-logo-new.png" alt="IF Engbo">
+    </div>
+
+    <nav>
+      <a routerLink="/player">Forside</a>
+      <a routerLink="/player-trainings">Træninger</a>
+      <a routerLink="/player-matches">Kampe</a>
+      <a routerLink="/">Log ud</a>
+    </nav>
+  </header>
+
+  <main class="content">
+
+    <h2>Aktivitets detaljer</h2>
+
+    <div class="details-layout">
+
+      <section class="details-card">
+
+        <h3>Aktivitets type: {{ type || 'Aktivitet' }}</h3>
+
+        <p><strong>Status:</strong> Aktiv</p>
+
+        <p><strong>Mit hold:</strong> {{ team || 'Ikke angivet' }}</p>
+
+        <p><strong>Modstander:</strong> {{ opponent || 'Ikke angivet' }}</p>
+
+        <p><strong>Dato:</strong> {{ date || 'Ikke angivet' }}</p>
+
+        <p><strong>Tid:</strong> {{ time || 'Ikke angivet' }}</p>
+
+        <p><strong>Varighed:</strong> {{ duration || 'Ikke angivet' }}</p>
+
+        <p><strong>Bane:</strong> {{ location || 'Ikke angivet' }}</p>
+
+        <p><strong>Adresse:</strong> {{ address || 'Ikke angivet' }}</p>
+
+        <p><strong>Træner:</strong> Mette Sørensen</p>
+
+      </section>
+
+      <section class="participation-card">
+
+        <h3>Min deltagelse:</h3>
+
+        <div class="response-buttons">
+
+          <button
+            type="button"
+            [class.selected]="selectedResponse === 'yes'"
+            (click)="selectResponse('yes')">
+            Jeg kommer
+          </button>
+
+          <button
+            type="button"
+            [class.selected]="selectedResponse === 'no'"
+            (click)="selectResponse('no')">
+            Jeg kan ikke
+          </button>
+
+        </div>
+
+        <textarea
+          placeholder="Beskrivelse..."
+          [(ngModel)]="comment">
+        </textarea>
+
+        <button
+          type="button"
+          class="save-button"
+          (click)="saveResponse()">
+          Gem
+        </button>
+
+      </section>
+
+    </div>
+
+    <a class="back-link" routerLink="/player-matches">
+      Tilbage til kampe
+    </a>
+
+  </main>
+
+</div>
