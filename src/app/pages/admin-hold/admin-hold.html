@@ -1,0 +1,71 @@
+<div class="admin-page">
+
+  <header class="navbar">
+
+    <div class="logo">
+      <img src="/if-engbo-logo-new.png" alt="IF Engbo">
+    </div>
+
+    <nav>
+      <a routerLink="/admin" class="active">Hold administration</a>
+      <a routerLink="/admin-statistics">Fremmødestatistik</a>
+      <a routerLink="/">Log ud</a>
+    </nav>
+
+  </header>
+
+  <main class="content">
+
+    <div class="page-heading">
+      <h2>Hold administration</h2>
+
+      <a routerLink="/admin-manage-hold" class="create-button">
+        Opret hold
+      </a>
+    </div>
+
+    <section class="table-container">
+
+      <table>
+
+        <thead>
+        <tr>
+          <th>Hold</th>
+          <th>År</th>
+          <th>Træner</th>
+          <th>Ugedag</th>
+          <th>Træningstid</th>
+          <th>Handling</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+          @for (team of teams; track team.id) {
+            <tr>
+              <td>{{ team.name }}</td>
+              <td>{{ team.year }}</td>
+              <td>{{ team.coach }}</td>
+              <td>{{ team.day }}</td>
+              <td>{{ team.time }}</td>
+
+              <td>
+                <a
+                  [routerLink]="['/admin-manage-hold']"
+                  [queryParams]="{ id: team.id }"
+                  class="edit-button">
+                  Rediger hold
+                </a>
+              </td>
+            </tr>
+          }
+
+        </tbody>
+
+      </table>
+
+    </section>
+
+  </main>
+
+</div>

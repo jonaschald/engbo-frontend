@@ -1,0 +1,200 @@
+<div class="admin-page">
+
+  <header class="navbar">
+
+    <div class="logo">
+      <img src="/if-engbo-logo-new.png" alt="IF Engbo">
+    </div>
+
+    <nav>
+      <a routerLink="/admin">Hold administration</a>
+      <a routerLink="/admin-statistics" class="active">Fremmødestatistik</a>
+      <a routerLink="/">Log ud</a>
+    </nav>
+
+  </header>
+
+  <main class="content">
+
+    <div class="page-heading">
+      <div>
+        <h2>{{ teamName }} - Fremmødestatistik</h2>
+        <p class="subtitle">Træner: {{ coach }}</p>
+      </div>
+
+      <a routerLink="/admin-statistics" class="back-button">
+        Tilbage
+      </a>
+    </div>
+
+    <!-- Summary cards -->
+
+    <section class="summary-cards">
+
+      <div class="summary-card">
+        <span>Antal spillere</span>
+        <strong>{{ totalPlayers }}</strong>
+      </div>
+
+      <div class="summary-card">
+        <span>Fremmøde</span>
+        <strong>{{ attendancePercentage }}%</strong>
+      </div>
+
+      <div class="summary-card">
+        <span>Gennemsnitligt fremmøde</span>
+        <strong>{{ averagePresent }}</strong>
+      </div>
+
+      <div class="summary-card">
+        <span>Samlet fravær</span>
+        <strong>{{ totalAbsent }}</strong>
+      </div>
+
+    </section>
+
+    <!-- Filters -->
+
+    <section class="filters">
+
+      <div class="filter-group">
+        <label for="period">Periode</label>
+
+        <select
+          id="period"
+          [(ngModel)]="selectedPeriod">
+
+          <option value="week">Sidste aktiviteter</option>
+          <option value="month">Alle aktiviteter</option>
+
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="activity">Aktivitetstype</label>
+
+        <select
+          id="activity"
+          [(ngModel)]="selectedActivity">
+
+          <option value="all">Alle aktiviteter</option>
+          <option value="Træning">Træning</option>
+          <option value="Kamp">Kamp</option>
+
+        </select>
+      </div>
+
+    </section>
+
+    <!-- Attendance chart -->
+
+    <section class="chart-card">
+
+      <h3>Fremmøde og fravær</h3>
+
+      <div class="chart-legend">
+        <span>
+          <i class="legend-present"></i>
+          Fremmøde
+        </span>
+
+        <span>
+          <i class="legend-absent"></i>
+          Fravær
+        </span>
+      </div>
+
+      <div class="chart">
+
+        @for (item of filteredStatistics; track item.date) {
+
+          <div class="chart-column">
+
+            <div class="bar-container">
+
+              <div
+                class="bar present"
+                [style.height.%]="item.present / totalPlayers * 100"
+                [title]="'Fremmøde: ' + item.present">
+              </div>
+
+              <div
+                class="bar absent"
+                [style.height.%]="item.absent / totalPlayers * 100"
+                [title]="'Fravær: ' + item.absent">
+              </div>
+
+            </div>
+
+            <strong>{{ item.present }}/{{ totalPlayers }}</strong>
+
+            <span class="chart-date">{{ item.date }}</span>
+
+            <small>{{ item.activity }}</small>
+
+          </div>
+
+        }
+
+        @if (filteredStatistics.length === 0) {
+          <p>Ingen aktiviteter fundet.</p>
+        }
+
+      </div>
+
+    </section>
+
+    <!-- Statistics table -->
+
+    <section class="table-card">
+
+      <h3>Aktivitetsoversigt</h3>
+
+      <div class="table-container">
+
+        <table>
+
+          <thead>
+          <tr>
+            <th>Dato</th>
+            <th>Aktivitet</th>
+            <th>Fremmøde</th>
+            <th>Fravær</th>
+            <th>Fremmødeprocent</th>
+          </tr>
+          </thead>
+
+          <tbody>
+
+            @for (item of filteredStatistics; track item.date) {
+
+              <tr>
+                <td>{{ item.date }}</td>
+                <td>{{ item.activity }}</td>
+                <td class="present-text">{{ item.present }}</td>
+                <td class="absent-text">{{ item.absent }}</td>
+
+                <td>
+                  {{ (item.present / totalPlayers * 100).toFixed(0) }}%
+                </td>
+              </tr>
+
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+    <div class="back-section">
+      <a routerLink="/admin-statistics" class="back-button">
+        Tilbage til Fremmødestatistik
+      </a>
+    </div>
+
+  </main>
+
+</div>

@@ -1,0 +1,93 @@
+<div class="admin-page">
+
+  <header class="navbar">
+
+    <div class="logo">
+      <img src="/if-engbo-logo-new.png" alt="IF Engbo">
+    </div>
+
+    <nav>
+      <a routerLink="/admin">Hold administration</a>
+      <a routerLink="/admin-statistics" class="active">Fremmødestatistik</a>
+      <a routerLink="/">Log ud</a>
+    </nav>
+
+  </header>
+
+  <main class="content">
+
+    <div class="page-heading">
+      <h2>Fremmødestatistik</h2>
+    </div>
+
+    <section class="table-container">
+
+      <table>
+
+        <thead>
+        <tr>
+          <th>Hold</th>
+          <th>Træner</th>
+          <th>Antal spillere</th>
+          <th>Antal træninger</th>
+          <th>Antal kampe</th>
+          <th>Fremmøde</th>
+          <th>Handling</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+          @for (team of teams; track team.id) {
+            <tr>
+
+              <td>{{ team.name }}</td>
+
+              <td>{{ team.coach }}</td>
+
+              <td>{{ team.players }}</td>
+
+              <td>{{ team.trainings }}</td>
+
+              <td>{{ team.matches }}</td>
+
+              <td>
+                <div class="attendance">
+                  <div class="attendance-bar">
+                    <div
+                      class="attendance-fill"
+                      [style.width.%]="team.attendance">
+                    </div>
+                  </div>
+
+                  <span>{{ team.attendance }}%</span>
+                </div>
+              </td>
+
+              <td>
+                <a
+                  [routerLink]="['/admin-team-statistics']"
+                  [queryParams]="{ id: team.id, name: team.name }"
+                  class="details-button">
+                  Se statistik
+                </a>
+              </td>
+
+            </tr>
+          }
+
+        </tbody>
+
+      </table>
+
+    </section>
+
+    <div class="back-section">
+      <a routerLink="/admin" class="back-button">
+        Tilbage
+      </a>
+    </div>
+
+  </main>
+
+</div>

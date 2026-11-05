@@ -1,0 +1,129 @@
+<div class="admin-page">
+
+  <header class="navbar">
+
+    <div class="logo">
+      <img src="/if-engbo-logo-new.png" alt="IF Engbo">
+    </div>
+
+    <nav>
+      <a routerLink="/admin">Hold administration</a>
+      <a routerLink="/admin-statistics">Fremmødestatistik</a>
+      <a routerLink="/">Log ud</a>
+    </nav>
+
+  </header>
+
+  <main class="content">
+
+    <div class="page-heading">
+      <h2>{{ isEditMode ? 'Rediger hold' : 'Opret hold' }}</h2>
+      <a routerLink="/admin" class="back-button">Tilbage</a>
+    </div>
+
+    <section class="form-card">
+
+      <form (ngSubmit)="saveTeam()">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="teamName">Holdnavn</label>
+            <input
+              id="teamName"
+              type="text"
+              name="teamName"
+              [(ngModel)]="teamName"
+              placeholder="Eksempel: U13"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="ageGroup">Årgang</label>
+            <input
+              id="ageGroup"
+              type="text"
+              name="ageGroup"
+              [(ngModel)]="ageGroup"
+              placeholder="Eksempel: 13"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="coach">Træner</label>
+            <select
+              id="coach"
+              name="coach"
+              [(ngModel)]="coach"
+              required>
+
+              <option value="">Vælg træner</option>
+
+              @for (item of coaches; track item) {
+                <option [value]="item">{{ item }}</option>
+              }
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="trainingDay">Træningsdag</label>
+            <select
+              id="trainingDay"
+              name="trainingDay"
+              [(ngModel)]="trainingDay"
+              required>
+
+              <option value="">Vælg dag</option>
+              <option value="Mandag">Mandag</option>
+              <option value="Tirsdag">Tirsdag</option>
+              <option value="Onsdag">Onsdag</option>
+              <option value="Torsdag">Torsdag</option>
+              <option value="Fredag">Fredag</option>
+              <option value="Lørdag">Lørdag</option>
+              <option value="Søndag">Søndag</option>
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="startTime">Starttid</label>
+            <input
+              id="startTime"
+              type="time"
+              name="startTime"
+              [(ngModel)]="startTime"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="endTime">Sluttid</label>
+            <input
+              id="endTime"
+              type="time"
+              name="endTime"
+              [(ngModel)]="endTime"
+              required>
+          </div>
+
+        </div>
+
+        <div class="form-actions">
+
+          <a routerLink="/admin" class="cancel-button">
+            Annuller
+          </a>
+
+          <button type="submit" class="save-button">
+            {{ isEditMode ? 'Gem ændringer' : 'Opret hold' }}
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+</div>
