@@ -1,0 +1,106 @@
+<div class="player-page">
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="/if-engbo-logo-new.png" alt="IF Engbo">
+    </div>
+
+    <nav>
+      <a routerLink="/player">Forside</a>
+      <a routerLink="/player-trainings">Træninger</a>
+      <a routerLink="/player-matches">Kampe</a>
+      <a routerLink="/">Log ud</a>
+    </nav>
+  </header>
+
+  <main class="content">
+
+    <h2>Mine træninger</h2>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Dato</th>
+        <th>Tid</th>
+        <th>Varighed</th>
+        <th>Status</th>
+        <th>Sted</th>
+        <th>Hold</th>
+        <th>Min tilmelding</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr>
+        <td>
+          <a routerLink="/player-activity-details">06/11/2026</a>
+        </td>
+        <td>19:00</td>
+        <td>120 minutter</td>
+        <td><span class="status active">Aktiv</span></td>
+        <td>Engbo kunstgræs</td>
+        <td>U13</td>
+        <td>
+          <div class="response-buttons">
+            <button
+              type="button"
+              [class.selected]="trainingResponses[1] === 'yes'"
+              (click)="respond(1, 'yes')">
+              Jeg kommer
+            </button>
+
+            <button
+              type="button"
+              [class.selected]="trainingResponses[1] === 'no'"
+              (click)="respond(1, 'no')">
+              Jeg kan ikke
+            </button>
+          </div>
+
+          <textarea
+            placeholder="Kommentar (valgfrit)"
+            [value]="trainingComments[1] || ''"
+            (input)="updateComment(1, $any($event.target).value)">
+          </textarea>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a routerLink="/player-activity-details">10/11/2026</a>
+        </td>
+        <td>19:00</td>
+        <td>120 minutter</td>
+        <td><span class="status active">Aktiv</span></td>
+        <td>Engbo kunstgræs</td>
+        <td>U13</td>
+        <td>
+          <div class="response-buttons">
+            <button
+              type="button"
+              [class.selected]="trainingResponses[2] === 'yes'"
+              (click)="respond(2, 'yes')">
+              Jeg kommer
+            </button>
+
+            <button
+              type="button"
+              [class.selected]="trainingResponses[2] === 'no'"
+              (click)="respond(2, 'no')">
+              Jeg kan ikke
+            </button>
+          </div>
+
+          <textarea
+            placeholder="Kommentar (valgfrit)"
+            [value]="trainingComments[2] || ''"
+            (input)="updateComment(2, $any($event.target).value)">
+          </textarea>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </main>
+
+</div>

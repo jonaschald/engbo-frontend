@@ -1,0 +1,117 @@
+
+<div class="traener-kampe-page">
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <img src="/if-engbo-logo-new.png" alt="IF Engbo">
+    </div>
+
+    <nav class="side-menu">
+
+      <a routerLink="/traener" class="menu-item">
+        <span class="menu-icon">⌂</span>
+        <span>Hjem</span>
+      </a>
+
+      <a routerLink="/traener-hold" class="menu-item">
+        <span class="menu-icon">♟</span>
+        <span>Mine hold</span>
+      </a>
+
+      <a routerLink="/traener-traeninger" class="menu-item">
+        <span class="menu-icon">▣</span>
+        <span>Træninger</span>
+      </a>
+
+      <a routerLink="/traener-kampe" class="menu-item active">
+        <span class="menu-icon">⚽</span>
+        <span>Kampe</span>
+      </a>
+
+      <a routerLink="/traener-fremmoede" class="menu-item">
+        <span class="menu-icon">✓</span>
+        <span>Fremmøde</span>
+      </a>
+
+      <div class="menu-item">
+        <span class="menu-icon">▦</span>
+        <span>Kalender</span>
+      </div>
+
+    </nav>
+
+  </aside>
+
+  <main class="main-content">
+
+    <h1>Planlagte kampe</h1>
+
+    <section class="matches-section">
+
+      <div class="section-header">
+        <h2>Kampe</h2>
+
+        <a
+          routerLink="/traener-opret-kamp"
+          class="create-button">
+          + Opret kamp
+        </a>
+      </div>
+
+      <table>
+        <thead>
+        <tr>
+          <th>Dato</th>
+          <th>Hold</th>
+          <th>Modstander</th>
+          <th>Tid</th>
+          <th>Sted</th>
+          <th>Handling</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+          @for (match of matches; track match.id) {
+            <tr>
+              <td>{{ match.date }}</td>
+              <td>{{ match.team }}</td>
+              <td>{{ match.opponent }}</td>
+              <td>{{ match.time }}</td>
+              <td>{{ match.location }}</td>
+
+              <td class="action-buttons">
+
+                <a
+                  [routerLink]="['/traener-aktivitets-detaljer']"
+                  [queryParams]="{ id: match.id, type: 'kamp' }"
+                  class="details-button">
+                  Se detaljer
+                </a>
+
+                <button
+                  type="button"
+                  class="delete-button"
+                  (click)="deleteMatch(match.id)">
+                  Slet
+                </button>
+
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="6" class="empty-message">
+                Ingen planlagte kampe endnu.
+              </td>
+            </tr>
+          }
+
+        </tbody>
+      </table>
+
+    </section>
+
+  </main>
+
+</div>

@@ -1,0 +1,229 @@
+<div class="player-page">
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="/if-engbo-logo-new.png" alt="IF Engbo">
+    </div>
+
+    <nav>
+      <a routerLink="/player">Forside</a>
+      <a routerLink="/player-trainings">Træninger</a>
+      <a routerLink="/player-matches">Kampe</a>
+      <a routerLink="/">Log ud</a>
+    </nav>
+  </header>
+
+  <main class="content">
+
+    <h2>Mine kommende kampe</h2>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Dato</th>
+        <th>Tid</th>
+        <th>Modstander</th>
+        <th>Hold</th>
+        <th>Sted</th>
+        <th>Status</th>
+        <th>Min tilmelding</th>
+      </tr>
+      </thead>
+
+      <tbody>
+
+      <!-- Kamp 1 -->
+      <tr>
+        <td>
+          <a [routerLink]="['/player-activity-details']"
+             [queryParams]="{
+                type: 'Kamp',
+                opponent: 'FC Sønderborg',
+                date: '08/11/2026',
+                time: '14:00',
+                team: 'U13',
+                location: 'Engbo Stadion',
+                address: 'Holmevej 13, 6370 Engbo',
+                duration: '90 minutter'
+              }">
+            08/11/2026
+          </a>
+        </td>
+
+        <td>14:00</td>
+
+        <td>
+          <a [routerLink]="['/player-activity-details']"
+             [queryParams]="{
+                type: 'Kamp',
+                opponent: 'FC Sønderborg',
+                date: '08/11/2026',
+                time: '14:00',
+                team: 'U13',
+                location: 'Engbo Stadion',
+                address: 'Holmevej 13, 6370 Engbo',
+                duration: '90 minutter'
+              }">
+            FC Sønderborg
+          </a>
+        </td>
+
+        <td>U13</td>
+        <td>Engbo Stadion</td>
+        <td><span class="status active">Aktiv</span></td>
+
+        <td>
+          <div class="response-buttons">
+            <button type="button"
+                    [class.selected]="matchResponses[1] === 'yes'"
+                    (click)="respond(1, 'yes')">
+              Jeg kommer
+            </button>
+
+            <button type="button"
+                    [class.selected]="matchResponses[1] === 'no'"
+                    (click)="respond(1, 'no')">
+              Jeg kan ikke
+            </button>
+          </div>
+
+          <textarea
+            placeholder="Kommentar (valgfrit)"
+            [value]="matchComments[1] || ''"
+            (input)="updateComment(1, $any($event.target).value)">
+          </textarea>
+        </td>
+      </tr>
+
+      <!-- Kamp 2 -->
+      <tr>
+        <td>
+          <a [routerLink]="['/player-activity-details']"
+             [queryParams]="{
+                type: 'Kamp',
+                opponent: 'BK Nord',
+                date: '15/11/2026',
+                time: '13:00',
+                team: 'U13',
+                location: 'Udebane',
+                address: 'Holmevej 13, 6370 Engbo',
+                duration: '90 minutter'
+              }">
+            15/11/2026
+          </a>
+        </td>
+
+        <td>13:00</td>
+
+        <td>
+          <a [routerLink]="['/player-activity-details']"
+             [queryParams]="{
+                type: 'Kamp',
+                opponent: 'BK Nord',
+                date: '15/11/2026',
+                time: '13:00',
+                team: 'U13',
+                location: 'Udebane',
+                address: 'Holmevej 13, 6370 Engbo',
+                duration: '90 minutter'
+              }">
+            BK Nord
+          </a>
+        </td>
+
+        <td>U13</td>
+        <td>Udebane</td>
+        <td><span class="status active">Aktiv</span></td>
+
+        <td>
+          <div class="response-buttons">
+            <button type="button"
+                    [class.selected]="matchResponses[2] === 'yes'"
+                    (click)="respond(2, 'yes')">
+              Jeg kommer
+            </button>
+
+            <button type="button"
+                    [class.selected]="matchResponses[2] === 'no'"
+                    (click)="respond(2, 'no')">
+              Jeg kan ikke
+            </button>
+          </div>
+
+          <textarea
+            placeholder="Kommentar (valgfrit)"
+            [value]="matchComments[2] || ''"
+            (input)="updateComment(2, $any($event.target).value)">
+          </textarea>
+        </td>
+      </tr>
+
+      <!-- Kamp 3 -->
+      <tr>
+        <td>
+          <a [routerLink]="['/player-activity-details']"
+             [queryParams]="{
+                type: 'Kamp',
+                opponent: 'IF Sønderjylland',
+                date: '22/11/2026',
+                time: '15:00',
+                team: 'U13',
+                location: 'Engbo Stadion',
+                address: 'Holmevej 13, 6370 Engbo',
+                duration: '90 minutter'
+              }">
+            22/11/2026
+          </a>
+        </td>
+
+        <td>15:00</td>
+
+        <td>
+          <a [routerLink]="['/player-activity-details']"
+             [queryParams]="{
+                type: 'Kamp',
+                opponent: 'IF Sønderjylland',
+                date: '22/11/2026',
+                time: '15:00',
+                team: 'U13',
+                location: 'Engbo Stadion',
+                address: 'Holmevej 13, 6370 Engbo',
+                duration: '90 minutter'
+              }">
+            IF Sønderjylland
+          </a>
+        </td>
+
+        <td>U13</td>
+        <td>Engbo Stadion</td>
+        <td><span class="status active">Aktiv</span></td>
+
+        <td>
+          <div class="response-buttons">
+            <button type="button"
+                    [class.selected]="matchResponses[3] === 'yes'"
+                    (click)="respond(3, 'yes')">
+              Jeg kommer
+            </button>
+
+            <button type="button"
+                    [class.selected]="matchResponses[3] === 'no'"
+                    (click)="respond(3, 'no')">
+              Jeg kan ikke
+            </button>
+          </div>
+
+          <textarea
+            placeholder="Kommentar (valgfrit)"
+            [value]="matchComments[3] || ''"
+            (input)="updateComment(3, $any($event.target).value)">
+          </textarea>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+
+  </main>
+
+</div>

@@ -1,0 +1,200 @@
+.admin-page {
+  min-height: 100vh;
+  background-image: url('/stadium-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+/* Navbar */
+
+.navbar {
+  height: 85px;
+  background: rgba(255, 255, 255, 0.96);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.logo img {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.navbar nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.navbar nav a:hover {
+  color: #176b38;
+}
+
+/* Main content */
+
+.content {
+  width: 90%;
+  max-width: 1000px;
+  margin: 45px auto;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.page-heading h2 {
+  margin: 0;
+  color: #176b38;
+  font-size: 25px;
+}
+
+/* Form card */
+
+.form-card {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #e2e2e2;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  box-sizing: border-box;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background: white;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #176b38;
+  box-shadow: 0 0 4px rgba(23, 107, 56, 0.25);
+}
+
+/* Form buttons */
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.back-button,
+.cancel-button {
+  text-decoration: none;
+  color: #444;
+  background: #e8e8e8;
+  padding: 11px 18px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.back-button:hover,
+.cancel-button:hover {
+  background: #d5d5d5;
+}
+
+.save-button {
+  background: #176b38;
+  color: white;
+  padding: 11px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.save-button:hover {
+  background: #10512a;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+
+  .navbar {
+    height: auto;
+    padding: 15px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .navbar nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .content {
+    width: 95%;
+    box-sizing: border-box;
+    padding: 15px;
+    margin: 25px auto;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-heading h2 {
+    font-size: 20px;
+  }
+
+  .form-card {
+    padding: 15px;
+  }
+
+}

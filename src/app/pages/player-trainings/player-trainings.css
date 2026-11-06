@@ -1,0 +1,223 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.player-page {
+  min-height: 100vh;
+  padding: 8px;
+  font-family: Arial, sans-serif;
+  color: #17251b;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  background-image:
+    linear-gradient(
+      rgba(10, 30, 18, 0.30),
+      rgba(10, 30, 18, 0.30)
+    ),
+    url('/football-new.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.navbar {
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  background-color: rgba(244, 244, 244, 0.85);
+  border-bottom: 4px solid #167a35;
+}
+
+.logo img {
+  width: 105px;
+  height: auto;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.navbar nav a {
+  color: #174d29;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.navbar nav a:hover {
+  color: #249447;
+}
+
+.content {
+  flex: 1;
+  min-height: calc(100vh - 91px);
+  background-color: rgba(228, 232, 226, 0.55);
+  padding: 35px 30px;
+  box-sizing: border-box;
+}
+
+.content h2 {
+  font-size: 27px;
+  margin: 5px 0 25px;
+  font-weight: bold;
+  color: #174d29;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+th,
+td {
+  padding: 15px 12px;
+  text-align: left;
+  border: 1px solid #b9c9b9;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+th {
+  background-color: #176b35;
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #e3f0e3;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f7faf6;
+}
+
+tbody tr:hover {
+  background-color: #c5e5c8;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 10px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .logo img {
+    width: 75px;
+  }
+
+  .navbar nav {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .navbar nav a {
+    font-size: 11px;
+  }
+
+  .content {
+    padding: 20px 12px;
+    overflow-x: auto;
+  }
+
+  .content h2 {
+    font-size: 21px;
+  }
+
+  table {
+    min-width: 700px;
+  }
+}
+
+.status {
+  display: inline-block;
+  padding: 6px 13px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.status.active {
+  background-color: #d7f2dc;
+  color: #176b35;
+  border: 1px solid #9bd5a6;
+}
+
+.response-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.response-buttons button {
+  padding: 8px 12px;
+  border: 1px solid #176b35;
+  border-radius: 5px;
+  background-color: white;
+  color: #176b35;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.response-buttons button:hover {
+  background-color: #e3f0e3;
+}
+
+.response-buttons button.selected {
+  background-color: #176b35;
+  color: white;
+}
+
+.response-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.response-buttons button {
+  padding: 8px 12px;
+  border: 1px solid #176b35;
+  border-radius: 5px;
+  background-color: white;
+  color: #176b35;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.response-buttons button:hover {
+  background-color: #e3f0e3;
+}
+
+.response-buttons button.selected {
+  background-color: #176b35;
+  color: white;
+}
+
+td textarea {
+  width: 100%;
+  min-width: 140px;
+  min-height: 55px;
+  margin-top: 10px;
+  padding: 8px;
+  border: 1px solid #a9bca9;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  resize: vertical;
+}

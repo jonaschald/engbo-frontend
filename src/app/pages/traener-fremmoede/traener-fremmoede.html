@@ -1,0 +1,199 @@
+
+<div class="traener-fremmoede-page">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="/if-engbo-logo-new.png" alt="IF Engbo">
+    </div>
+
+    <nav class="side-menu">
+      <a routerLink="/traener" class="menu-item">
+        <span class="menu-icon">⌂</span>
+        <span>Hjem</span>
+      </a>
+
+      <a routerLink="/traener-hold" class="menu-item">
+        <span class="menu-icon">♟</span>
+        <span>Mine hold</span>
+      </a>
+
+      <a routerLink="/traener-traeninger" class="menu-item">
+        <span class="menu-icon">▣</span>
+        <span>Træninger</span>
+      </a>
+
+      <a routerLink="/traener-kampe" class="menu-item">
+        <span class="menu-icon">⚽</span>
+        <span>Kampe</span>
+      </a>
+
+      <a routerLink="/traener-fremmoede" class="menu-item active">
+        <span class="menu-icon">✓</span>
+        <span>Fremmøde</span>
+      </a>
+
+      <div class="menu-item">
+        <span class="menu-icon">▦</span>
+        <span>Kalender</span>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+
+    <h1>Fremmøde</h1>
+
+    <section class="attendance-section">
+      <h2>Registrer fremmøde</h2>
+
+      <div class="attendance-content">
+
+        <div class="attendance-header">
+
+          <div class="form-group">
+            <label for="training">Vælg træning:</label>
+
+            <select
+              id="training"
+              [(ngModel)]="selectedTrainingId"
+              (ngModelChange)="onTrainingChange()">
+
+              <option value="">Vælg træning</option>
+
+              @for (training of trainings; track training.id) {
+                <option [value]="training.id">
+                  {{ training.team }} - {{ training.date }} kl. {{ training.time }}
+                </option>
+              }
+
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="activity-date">Dato:</label>
+
+            <input
+              type="date"
+              id="activity-date"
+              [(ngModel)]="selectedDate"
+              (ngModelChange)="onDateChange()">
+          </div>
+
+          <div class="form-group">
+            <label for="team">Hold:</label>
+
+            <select
+              id="team"
+              [(ngModel)]="selectedTeam"
+              [disabled]="!!selectedTrainingId"
+              (ngModelChange)="updatePlayerAttendance()">
+
+              @for (team of teams; track team) {
+                <option [value]="team">{{ team }}</option>
+              }
+
+            </select>
+          </div>
+
+        </div>
+
+        <div class="add-player-form">
+
+          <input
+            type="text"
+            placeholder="Skriv spillerens navn..."
+            [(ngModel)]="newPlayerName"
+            (keyup.enter)="addPlayer()">
+
+          <button
+            type="button"
+            class="add-button"
+            (click)="addPlayer()">
+            + Tilføj spiller
+          </button>
+
+        </div>
+
+        @if (!selectedDate) {
+
+          <p class="empty-message">
+            Vælg en træning eller indtast en dato for at registrere fremmøde.
+          </p>
+
+        } @else {
+
+          <div class="table-container">
+
+            <table class="attendance-table">
+
+              <thead>
+              <tr>
+                <th>Spiller</th>
+                <th>Hold</th>
+                <th>Fremmøde</th>
+                <th>Handling</th>
+              </tr>
+              </thead>
+
+              <tbody>
+
+                @for (player of filteredPlayers; track player.id) {
+                  <tr>
+                    <td>{{ player.name }}</td>
+                    <td>{{ player.team }}</td>
+
+                    <td>
+                      <label class="attendance-checkbox">
+                        <input
+                          type="checkbox"
+                          [(ngModel)]="player.present">
+
+                        <span>
+                          {{ player.present ? 'Til stede' : 'Fraværende' }}
+                        </span>
+                      </label>
+                    </td>
+
+                    <td>
+                      <button
+                        type="button"
+                        class="delete-button"
+                        (click)="removePlayer(player.id)">
+                        Slet
+                      </button>
+                    </td>
+                  </tr>
+                } @empty {
+                  <tr>
+                    <td colspan="4" class="empty-message">
+                      Ingen spillere på dette hold endnu.
+                    </td>
+                  </tr>
+                }
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+          <div class="attendance-actions">
+            <button
+              type="button"
+              class="save-button"
+              (click)="saveAttendance()">
+              Gem fremmøde
+            </button>
+          </div>
+
+        }
+
+        @if (savedMessage) {
+          <p class="success-message">{{ savedMessage }}</p>
+        }
+
+      </div>
+    </section>
+
+  </main>
+</div>

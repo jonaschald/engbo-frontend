@@ -1,6 +1,5 @@
 import { Component, signal } from '@angular/core';
-import {Router, RouterOutlet} from '@angular/router';
-import {HttpService} from '../services/http-service';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   imports: [RouterOutlet],
@@ -10,17 +9,4 @@ import {HttpService} from '../services/http-service';
 })
 export class App {
   protected readonly title = signal('engbo-frontend');
-  private httpservice = new HttpService();
-
-  constructor(private router: Router) {
-    var t = this.httpservice.LoginUser({
-      email: "jens@gmail.com",
-      password: "jens123",
-    })
-
-    t.subscribe((res: ILoginResponse) => {
-      console.log("Token", res.token);
-      console.log("Name", res.name);
-    })
-  }
 }
