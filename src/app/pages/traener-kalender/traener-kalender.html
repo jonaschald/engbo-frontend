@@ -1,0 +1,180 @@
+
+<div class="traener-kalender-page">
+
+  <header class="navbar">
+
+    <div class="logo">
+      <img src="/if-engbo-logo-new.png" alt="IF Engbo">
+    </div>
+
+    <nav>
+      <a routerLink="/traener">Forside</a>
+      <a routerLink="/traener-hold">Mine hold</a>
+      <a routerLink="/traener-traeninger">Aktiviteter</a>
+      <a routerLink="/traener-kalender" class="active">Kalender</a>
+      <a routerLink="/">Log ud</a>
+    </nav>
+
+  </header>
+
+  <main class="content">
+
+    <h1>Aktivitetskalender</h1>
+
+    <section class="calendar-section">
+
+      <div class="calendar-header">
+
+        <button
+          type="button"
+          class="month-button"
+          (click)="previousMonth()">
+          ← Forrige
+        </button>
+
+        <h2>{{ monthName }}</h2>
+
+        <button
+          type="button"
+          class="month-button"
+          (click)="nextMonth()">
+          Næste →
+        </button>
+
+      </div>
+
+      <div class="calendar-legend">
+        <span>
+          <span class="legend-color training-color"></span>
+          Træning
+        </span>
+
+        <span>
+          <span class="legend-color match-color"></span>
+          Kamp
+        </span>
+      </div>
+
+      <div class="calendar-grid">
+
+        @for (day of ['Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør', 'Søn']; track day) {
+          <div class="weekday">
+            {{ day }}
+          </div>
+        }
+
+        @for (day of calendarDays; track $index) {
+
+          @if (day) {
+
+            <button
+              type="button"
+              class="calendar-day"
+              [class.selected]="selectedDate === formatDate(day)"
+              (click)="selectDate(day)">
+
+              <span class="day-number">
+                {{ day.getDate() }}
+              </span>
+
+              <div class="day-activities">
+
+                @for (activity of getActivitiesForDay(day); track activity.type + '-' + activity.id) {
+                  <span
+                    class="activity-marker"
+                    [class.training-marker]="activity.type === 'traening'"
+                    [class.match-marker]="activity.type === 'kamp'">
+                    {{ activity.type === 'kamp' ? 'Kamp' : 'Træning' }}
+                  </span>
+                }
+
+              </div>
+
+            </button>
+
+          } @else {
+
+            <div class="empty-day"></div>
+
+          }
+
+        }
+
+      </div>
+
+    </section>
+
+    <section class="selected-day-section">
+
+      <h2>
+        Aktiviteter
+        @if (selectedDate) {
+          - {{ selectedDate }}
+        }
+      </h2>
+
+      @if (!selectedDate) {
+
+        <p class="empty-message">
+          Vælg en dato i kalenderen for at se aktiviteter.
+        </p>
+
+      } @else {
+
+        @if (selectedActivities.length > 0) {
+
+          <div class="activity-list">
+
+            @for (activity of selectedActivities; track activity.type + '-' + activity.id) {
+
+              <a
+                class="activity-card"
+                [class.training-card]="activity.type === 'traening'"
+                [class.match-card]="activity.type === 'kamp'"
+                [routerLink]="['/traener-aktivitets-detaljer']"
+                [queryParams]="{
+                  id: activity.id,
+                  type: activity.type
+                }">
+
+                <div class="activity-card-header">
+                  <strong>
+                    {{ getActivityType(activity.type) }}
+                  </strong>
+
+                  <span>{{ activity.time }}</span>
+                </div>
+
+                <p>Hold: {{ activity.team }}</p>
+
+                @if (activity.opponent) {
+                  <p>Modstander: {{ activity.opponent }}</p>
+                }
+
+                <p>Sted: {{ activity.location }}</p>
+
+                <span class="details-link">
+                  Se detaljer →
+                </span>
+
+              </a>
+
+            }
+
+          </div>
+
+        } @else {
+
+          <p class="empty-message">
+            Ingen aktiviteter på denne dato.
+          </p>
+
+        }
+
+      }
+
+    </section>
+
+  </main>
+
+</div>

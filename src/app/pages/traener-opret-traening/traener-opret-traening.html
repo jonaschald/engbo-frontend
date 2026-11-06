@@ -1,0 +1,126 @@
+
+<div class="traener-opret-traening-page">
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <img src="/if-engbo-logo-new.png" alt="IF Engbo">
+    </div>
+
+    <nav class="side-menu">
+
+      <a routerLink="/traener" class="menu-item">
+        <span class="menu-icon">⌂</span>
+        <span>Hjem</span>
+      </a>
+
+      <a routerLink="/traener-hold" class="menu-item">
+        <span class="menu-icon">♟</span>
+        <span>Mine hold</span>
+      </a>
+
+      <a routerLink="/traener-traeninger" class="menu-item active">
+        <span class="menu-icon">▣</span>
+        <span>Træninger</span>
+      </a>
+
+      <a routerLink="/traener-kampe" class="menu-item">
+        <span class="menu-icon">⚽</span>
+        <span>Kampe</span>
+      </a>
+
+      <a routerLink="/traener-fremmoede" class="menu-item">
+        <span class="menu-icon">✓</span>
+        <span>Fremmøde</span>
+      </a>
+
+      <div class="menu-item">
+        <span class="menu-icon">▦</span>
+        <span>Kalender</span>
+      </div>
+
+    </nav>
+
+  </aside>
+
+  <main class="main-content">
+
+    <h1>Opret / Rediger Træning</h1>
+
+    <section class="training-form-section">
+
+      <h2>Træningsoplysninger</h2>
+
+      <form (ngSubmit)="saveTraining()">
+
+        <div class="form-group">
+          <label for="team">Hold</label>
+          <select
+            id="team"
+            name="team"
+            [(ngModel)]="training.team"
+            required>
+            @for (team of teams; track team) {
+              <option [value]="team">{{ team }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="type">Type</label>
+          <input
+            id="type"
+            name="type"
+            type="text"
+            [(ngModel)]="training.type"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="date">Dato</label>
+          <input
+            id="date"
+            name="date"
+            type="date"
+            [(ngModel)]="training.date"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="time">Tid</label>
+          <input
+            id="time"
+            name="time"
+            type="time"
+            [(ngModel)]="training.time"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="location">Sted</label>
+          <input
+            id="location"
+            name="location"
+            type="text"
+            [(ngModel)]="training.location"
+            placeholder="Indtast sted"
+            required>
+        </div>
+
+        <div class="form-actions">
+          <a routerLink="/traener-traeninger" class="cancel-button">
+            Annuller
+          </a>
+
+          <button type="submit" class="save-button">
+            Gem træning
+          </button>
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+</div>

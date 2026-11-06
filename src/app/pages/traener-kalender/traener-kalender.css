@@ -1,0 +1,343 @@
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.traener-kalender-page {
+  min-height: 100vh;
+  background-image:
+    linear-gradient(rgba(10, 30, 18, 0.25), rgba(10, 30, 18, 0.25)),
+    url('/stadium-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: Arial, sans-serif;
+  color: #17251b;
+}
+
+/* Navigation */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px 35px;
+  background: rgba(244, 244, 244, 0.90);
+  border-bottom: 3px solid #167a35;
+}
+
+.logo img {
+  max-width: 155px;
+  max-height: 65px;
+  object-fit: contain;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.navbar nav a {
+  padding: 11px 15px;
+  color: #174d29;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar nav a:hover {
+  background: #d8e8d8;
+}
+
+.navbar nav a.active {
+  background: #176b35;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Main content */
+
+.content {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.content h1 {
+  color: #fff;
+  font-size: 28px;
+  margin: 0 0 25px;
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Calendar section */
+
+.calendar-section,
+.selected-day-section {
+  background: rgba(228, 232, 226, 0.90);
+  border: 1px solid #c5d3c5;
+  border-radius: 8px;
+  padding: 22px;
+  margin-bottom: 25px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+  color: #174d29;
+  font-size: 22px;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.month-button {
+  padding: 10px 16px;
+  background: #176b35;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.month-button:hover {
+  background: #249447;
+}
+
+/* Calendar legend */
+
+.calendar-legend {
+  display: flex;
+  gap: 22px;
+  margin-bottom: 18px;
+  color: #174d29;
+  font-size: 13px;
+}
+
+.calendar-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.training-color {
+  background: #176b35;
+}
+
+.match-color {
+  background: #2465a8;
+}
+
+/* Calendar grid */
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.weekday {
+  padding: 12px 5px;
+  text-align: center;
+  background: #176b35;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.calendar-day,
+.empty-day {
+  min-height: 105px;
+  border: 1px solid #c5d3c5;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.85);
+  box-sizing: border-box;
+}
+
+.calendar-day {
+  padding: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.calendar-day:hover {
+  background: #e3f0e3;
+}
+
+.calendar-day.selected {
+  background: #d1ead3;
+  border: 2px solid #176b35;
+}
+
+.day-number {
+  display: block;
+  color: #174d29;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.day-activities {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.activity-marker {
+  display: block;
+  padding: 4px 5px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.training-marker {
+  background: #176b35;
+}
+
+.match-marker {
+  background: #2465a8;
+}
+
+/* Selected day */
+
+.selected-day-section h2 {
+  color: #174d29;
+  font-size: 20px;
+  margin: 0 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #167a35;
+}
+
+.activity-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
+}
+
+.activity-card {
+  display: block;
+  padding: 17px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #c5d3c5;
+  border-left: 5px solid #176b35;
+  border-radius: 6px;
+  color: #17251b;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.training-card {
+  border-left-color: #176b35;
+}
+
+.match-card {
+  border-left-color: #2465a8;
+}
+
+.activity-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: #174d29;
+}
+
+.activity-card p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.details-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #176b35;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.empty-message {
+  padding: 20px;
+  text-align: center;
+  color: #174d29;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+}
+
+/* Responsive design */
+
+@media (max-width: 750px) {
+  .navbar {
+    flex-direction: column;
+    padding: 12px;
+  }
+
+  .navbar nav {
+    justify-content: center;
+  }
+
+  .content {
+    padding: 18px 10px;
+  }
+
+  .calendar-section,
+  .selected-day-section {
+    padding: 12px;
+  }
+
+  .calendar-day,
+  .empty-day {
+    min-height: 75px;
+    padding: 4px;
+  }
+
+  .weekday {
+    font-size: 11px;
+    padding: 9px 2px;
+  }
+
+  .activity-marker {
+    font-size: 8px;
+    padding: 3px;
+  }
+
+  .calendar-header h2 {
+    font-size: 17px;
+  }
+
+  .month-button {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+}
